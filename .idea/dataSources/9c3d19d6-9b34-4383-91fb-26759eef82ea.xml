@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="arduin_bd@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="arduin_bd">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="phpmyadmin"/>
+    <schema id="7" parent="1" name="test"/>
+    <table id="8" parent="2" name="cuenta"/>
+    <table id="9" parent="2" name="riego"/>
+    <table id="10" parent="2" name="tipo_cuenta"/>
+    <table id="11" parent="2" name="tipo_riego"/>
+    <table id="12" parent="2" name="usuario"/>
+    <column id="13" parent="8" name="cuenta_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="14" parent="8" name="fk_usuario_rut">
+      <Position>2</Position>
+      <DataType>varchar(12)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="8" name="cuenta_clave">
+      <Position>3</Position>
+      <DataType>varchar(150)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="8" name="fk_cuenta_tipo">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="8" name="eliminar_estado">
+      <Position>5</Position>
+      <DataType>bit(1)|0</DataType>
+      <DefaultExpression>b&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="18" parent="8" name="fk_cuenta_tipo">
+      <ColNames>fk_cuenta_tipo</ColNames>
+    </index>
+    <index id="19" parent="8" name="fk_usuario_rut">
+      <ColNames>fk_usuario_rut</ColNames>
+    </index>
+    <key id="20" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>cuenta_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="21" parent="8" name="cuenta_ibfk_1">
+      <ColNames>fk_usuario_rut</ColNames>
+      <RefSchemaName>arduin_bd</RefSchemaName>
+      <RefTableName>usuario</RefTableName>
+      <RefColNames>usuario_rut</RefColNames>
+    </foreign-key>
+    <foreign-key id="22" parent="8" name="cuenta_ibfk_2">
+      <ColNames>fk_cuenta_tipo</ColNames>
+      <RefSchemaName>arduin_bd</RefSchemaName>
+      <RefTableName>tipo_cuenta</RefTableName>
+      <RefColNames>tipo_id</RefColNames>
+    </foreign-key>
+    <column id="23" parent="9" name="riego_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="9" name="riego_fecha">
+      <Position>2</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="9" name="riego_temperatura">
+      <Position>3</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="9" name="ruego_humedad">
+      <Position>4</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="9" name="fk_riego_tipo">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="9" name="fk_riego_usuario">
+      <Position>6</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="29" parent="9" name="eliminar_estado">
+      <Position>7</Position>
+      <DataType>bit(1)|0</DataType>
+      <DefaultExpression>b&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="30" parent="9" name="fk_riego_tipo">
+      <ColNames>fk_riego_tipo</ColNames>
+    </index>
+    <index id="31" parent="9" name="fk_riego_usuario">
+      <ColNames>fk_riego_usuario</ColNames>
+    </index>
+    <key id="32" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>riego_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="33" parent="9" name="riego_ibfk_1">
+      <ColNames>fk_riego_tipo</ColNames>
+      <RefSchemaName>arduin_bd</RefSchemaName>
+      <RefTableName>tipo_riego</RefTableName>
+      <RefColNames>tipo_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="34" parent="9" name="riego_ibfk_2">
+      <ColNames>fk_riego_usuario</ColNames>
+      <RefSchemaName>arduin_bd</RefSchemaName>
+      <RefTableName>usuario</RefTableName>
+      <RefColNames>usuario_rut</RefColNames>
+    </foreign-key>
+    <column id="35" parent="10" name="tipo_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="10" name="tipo_descripcion">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="37" parent="10" name="eliminar_estado">
+      <Position>3</Position>
+      <DataType>bit(1)|0</DataType>
+      <DefaultExpression>b&apos;0&apos;</DefaultExpression>
+    </column>
+    <key id="38" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>tipo_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="39" parent="11" name="tipo_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="11" name="tipo_descripcion">
+      <Position>2</Position>
+      <DataType>varchar(150)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="11" name="eliminar_estado">
+      <Position>3</Position>
+      <DataType>bit(1)|0</DataType>
+      <DefaultExpression>b&apos;0&apos;</DefaultExpression>
+    </column>
+    <key id="42" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>tipo_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="43" parent="12" name="usuario_rut">
+      <Position>1</Position>
+      <DataType>varchar(12)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="12" name="usuario_nombre">
+      <Position>2</Position>
+      <DataType>varchar(150)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="12" name="usuario_apellido">
+      <Position>3</Position>
+      <DataType>varchar(150)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="12" name="eliminar_estado">
+      <Position>4</Position>
+      <DataType>bit(1)|0</DataType>
+      <DefaultExpression>b&apos;0&apos;</DefaultExpression>
+    </column>
+    <key id="47" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>usuario_rut</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
